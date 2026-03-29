@@ -1,0 +1,171 @@
+[
+  {
+    "id": "slow_start",
+    "question": "Is your computer running slow?",
+    "answers": ["Yes", "No"],
+    "next": ["slow_type", "start"]
+  },
+  {
+    "id": "slow_type",
+    "question": "Did the problem start suddenly or has it always been slow?",
+    "answers": ["Suddenly", "Always"],
+    "next": ["slow_sudden", "slow_always"]
+  },
+
+  {
+    "id": "slow_sudden",
+    "question": "Did you recently install a new program or update?",
+    "answers": ["Yes", "No"],
+    "next": ["slow_remove_program", "slow_restart"]
+  },
+  {
+    "id": "slow_remove_program",
+    "question": "Try uninstalling the recent program. Did it help?",
+    "answers": ["Yes", "No"],
+    "next": ["end_ok", "slow_restart"]
+  },
+  {
+    "id": "slow_restart",
+    "question": "Restart your computer. Did it improve?",
+    "answers": ["Yes", "No"],
+    "next": ["end_ok", "slow_taskmanager"]
+  },
+
+  {
+    "id": "slow_always",
+    "question": "Is your computer older than 4–5 years?",
+    "answers": ["Yes", "No"],
+    "next": ["slow_old_pc", "slow_taskmanager"]
+  },
+  {
+    "id": "slow_old_pc",
+    "question": "Older computers may be slow. Continue checking anyway.",
+    "answers": ["Continue"],
+    "next": ["slow_taskmanager"]
+  },
+
+  {
+    "id": "slow_taskmanager",
+    "question": "Open Task Manager (Ctrl + Shift + Esc). Is CPU or Memory very high?",
+    "answers": ["Yes", "No", "Don't know"],
+    "next": ["slow_heavy_apps", "slow_disk_check", "slow_disk_check"]
+  },
+
+  {
+    "id": "slow_heavy_apps",
+    "question": "Do you see a program using a lot of CPU or RAM?",
+    "answers": ["Yes", "No"],
+    "next": ["slow_close_apps", "slow_disk_check"]
+  },
+  {
+    "id": "slow_close_apps",
+    "question": "Close heavy programs. Did it fix the problem?",
+    "answers": ["Yes", "No"],
+    "next": ["end_ok", "slow_disk_check"]
+  },
+
+  {
+    "id": "slow_disk_check",
+    "question": "Is your disk usage close to 100%?",
+    "answers": ["Yes", "No", "Don't know"],
+    "next": ["slow_disk_fix", "slow_storage", "slow_storage"]
+  },
+  {
+    "id": "slow_disk_fix",
+    "question": "High disk usage can slow your PC. Continue troubleshooting.",
+    "answers": ["Continue"],
+    "next": ["slow_storage"]
+  },
+
+  {
+    "id": "slow_storage",
+    "question": "Is your C drive almost full?",
+    "answers": ["Yes", "No"],
+    "next": ["slow_cleanup", "slow_startup_apps"]
+  },
+  {
+    "id": "slow_cleanup",
+    "question": "Delete unnecessary files or run Disk Cleanup. Did it help?",
+    "answers": ["Yes", "No"],
+    "next": ["end_ok", "slow_startup_apps"]
+  },
+
+  {
+    "id": "slow_startup_apps",
+    "question": "Do many programs open automatically on startup?",
+    "answers": ["Yes", "No", "Don't know"],
+    "next": ["slow_disable_startup", "slow_ram_check", "slow_ram_check"]
+  },
+  {
+    "id": "slow_disable_startup",
+    "question": "Disable startup programs in Task Manager. Did it help?",
+    "answers": ["Yes", "No"],
+    "next": ["end_ok", "slow_ram_check"]
+  },
+
+  {
+    "id": "slow_ram_check",
+    "question": "How much RAM does your computer have?",
+    "answers": ["4GB or less", "8GB", "16GB+", "Don't know"],
+    "next": ["slow_upgrade", "slow_scan", "slow_scan", "slow_scan"]
+  },
+  {
+    "id": "slow_upgrade",
+    "question": "Low RAM can slow your PC. Consider upgrading.",
+    "answers": ["Continue"],
+    "next": ["slow_scan"]
+  },
+
+  {
+    "id": "slow_scan",
+    "question": "Run an antivirus scan. Did it find threats?",
+    "answers": ["Yes", "No"],
+    "next": ["slow_remove_virus", "slow_browser"]
+  },
+  {
+    "id": "slow_remove_virus",
+    "question": "Remove detected threats. Did performance improve?",
+    "answers": ["Yes", "No"],
+    "next": ["end_ok", "slow_browser"]
+  },
+
+  {
+    "id": "slow_browser",
+    "question": "Is your browser (Chrome/Edge) slow with many tabs?",
+    "answers": ["Yes", "No"],
+    "next": ["slow_tabs", "slow_update_windows"]
+  },
+  {
+    "id": "slow_tabs",
+    "question": "Close unnecessary tabs. Did it help?",
+    "answers": ["Yes", "No"],
+    "next": ["end_ok", "slow_update_windows"]
+  },
+
+  {
+    "id": "slow_update_windows",
+    "question": "Is your Windows up to date?",
+    "answers": ["Yes", "No", "Don't know"],
+    "next": ["slow_final", "slow_update", "slow_update"]
+  },
+  {
+    "id": "slow_update",
+    "question": "Update Windows and drivers. Did it help?",
+    "answers": ["Yes", "No"],
+    "next": ["end_ok", "slow_final"]
+  },
+
+  {
+    "id": "slow_final",
+    "question": "Your PC may need hardware upgrade (SSD / RAM) or technician check.",
+    "answers": ["Restart"],
+    "next": ["slow_start"]
+  },
+
+  {
+    "id": "end_ok",
+    "question": "✅ Great! Your problem seems solved.",
+    "answers": ["Restart"],
+    "next": ["slow_start"]
+  }
+]
